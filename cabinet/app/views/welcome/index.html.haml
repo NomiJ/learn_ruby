@@ -1,1 +1,17 @@
-%h1 Welcome to file Cabinet
+#banner
+	.banner_content
+	%h1 File Cabinet 
+	%p  Life work is secure 
+	%button= link_to 'Enter', new_user_registration_path
+
+#callouts
+	.callout_inner
+		.wrapper
+			.callout
+				%h2 Organise
+				%p Sample content
+
+#bottom_cta
+	.wrapper
+		%h2 Go Ahead
+		%button= link_to 'Join Now', new_user_registration_path
