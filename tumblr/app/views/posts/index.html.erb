@@ -1,5 +1,5 @@
 <h1> Index Page </h1>
 <% @posts.each do |p| %>
 <%= link_to p.title, p %>
-<%= p.body %>
+<%= truncate(p.body, length: 50) %>
 <%end%>

@@ -9,6 +9,19 @@
   </head>
 
   <body>
+  	<ul>
+  		<li>
+  			<%= link_to 'Tumblr', root_path %>
+  		</li>
+  		<li>
+  			<%= link_to 'New Post', new_post_path %>
+  		</li>
+  	</ul>
     <%= yield %>
-  </body>
+	<div>
+  		<% flash.each do |f| %>
+  		<%= content_tag(:div, msg, class: 'alert')%>
+  			<%end%>
+  	</div>
+    </body>
 </html>
