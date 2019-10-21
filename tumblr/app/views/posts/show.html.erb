@@ -7,3 +7,9 @@
 <p>
 <%= @post.body %>
 </p>
+
+<p>
+	<%= link_to 'Edit Post', edit_post_path(@post) %>
+	<%= link_to 'Del Post', post_path(@post), method: :delete, data: {confirm: 'Are You Sure ?'} %>
+
+</p>
