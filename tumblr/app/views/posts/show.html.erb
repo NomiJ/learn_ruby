@@ -12,12 +12,17 @@
 	<h2><%= @post.comments.count %> Comments </h2>
 	<%= render @post.comments %>
 </div>
+ <% if user_signed_in? %>
+
 <div><h3> Join Discussion </h3>
-	<%= render 'comments/form' %>
+   	<%= render 'comments/form' %>
+
 </div>
+ <% end %>
 
 <p>
+	<% if  user_signed_in? %>
 	<%= link_to 'Edit Post', edit_post_path(@post) %>
 	<%= link_to 'Del Post', post_path(@post), method: :delete, data: {confirm: 'Are You Sure ?'} %>
-
+	<% end %>
 </p>

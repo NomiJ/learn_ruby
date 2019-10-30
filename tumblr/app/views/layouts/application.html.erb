@@ -13,7 +13,19 @@
   		<li>
   			<%= link_to 'Tumblr', root_path %>
   			<%= link_to 'About', about_path %>
+  			<%= link_to 'Posts', posts_path %>
   		</li>
+		  <li>
+		  <% unless user_signed_in? %>
+
+		  		  <%=  link_to 'Login', new_user_session_path %>
+		  		  <%=  link_to 'Signin', new_user_registration_path %>
+		  
+		  <%else%>
+	<%=  link_to 'Logout', destroy_user_session_path, method: :delete %>
+		  <%end%>
+		  	
+		  </li>
   		<li>
 		  <% if current_page?(root_path)%>
   			<%= link_to 'New Post', new_post_path %>
@@ -27,9 +39,12 @@
   	</ul>
     <%= yield %>
 	<div>
-  		<% flash.each do |f| %>
-  		<%= content_tag(:div, msg, class: 'alert')%>
-  			<%end%>
-  	</div>	
+  	</div>
+	  <p>
+	   <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+
+	  </p>	
     </body>
 </html>
