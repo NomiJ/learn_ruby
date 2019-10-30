@@ -1,7 +1,4 @@
-<% if @comments.errors.any? %>
-<%= @comments.each do |c| %>
-<em><%= c.name %></em>
-<i><%= c.body %></i>
-<u><%= time_ago_in_words(c.created_at)%></u>
-<%end%>
-<%end%>
+
+<em><%= comment.name %></em>
+<i><%= comment.body %></i>
+<u><%= time_ago_in_words(comment.created_at)%></u>
