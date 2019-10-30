@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-    before_action :find_post, only: [:create]
+    before_action :find_post, only: [:create, :destroy]
 
 
 	def index 
@@ -16,8 +16,9 @@ class CommentsController < ApplicationController
 	def edit
 	end
 	def destroy
+		@comment = @post.comments.find(params[:id])
 		@comment.destroy
-		redirect_to	root_path
+		redirect_to	post_path(@post)
 	end
 	def update
 		if @comment.update(comment_param)
