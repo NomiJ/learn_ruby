@@ -1,0 +1,40 @@
+
+<h1>Plays : <%= params[:category] %></h1>
+<div class="container">
+
+<% if @plays.count ==0 %>
+  <h3> No Play found for this category </h3>
+<%else%>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Director</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Created</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plays.each do |play| %>
+      <tr>
+        <td >
+        <%= link_to image_tag(play.play_img.url(:play_index)), play%>
+        <%= link_to play.title, play %>
+        </td>
+        <td><%= play.description %></td>
+        <td><%= play.director %></td>
+
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_play_path(play), class: "btn btn-primary" %></td>
+          <td><%= link_to 'Destroy', play, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+        <%end%>
+        <td><%= time_ago_in_words(play.created_at) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
+</div>

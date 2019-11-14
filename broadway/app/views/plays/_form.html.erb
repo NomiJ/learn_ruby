@@ -1,0 +1,43 @@
+<%= form_for(play, html: {multipart: true}) do |f| %>
+  <% if play.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(play.errors.count, "error") %> prohibited this play from being saved:</h2>
+
+      <ul>
+      <% play.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="field">
+            <%= image_tag play.play_img.url(:play_show)%>
+    <%= f.label :play_img  %>
+    <%= f.file_field :play_img  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :director %>
+    <%= f.text_field :director %>
+  </div>
+
+
+  <div class="field">
+      <%= f.select :category_id, @categories%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

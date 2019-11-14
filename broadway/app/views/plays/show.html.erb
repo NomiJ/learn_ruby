@@ -1,0 +1,54 @@
+<div class="container">
+<p> <%= image_tag @play.play_img.url(:play_show)%>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%= @play.title %> 
+</p>
+<p>
+<strong> Avg Rating </strong>
+  <div class="rating" data-score='<%= @avg_rating %> '></div>
+  </p>
+  <strong> Number of Reviews </strong>
+  <span><%= @play.reviews.count%></span>
+  </p>
+  
+<p>
+  <strong>Description:</strong>
+  <%= @play.description %>
+</p>
+
+<p>
+  <strong>Director:</strong>
+  <%= @play.director %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @play.category.name %>
+</p>
+<p>
+<%= render @play.reviews%>
+</p>
+<p>
+<% if user_signed_in? %>
+
+<%= render 'reviews/form'%>
+<% end %>
+
+</p>
+
+<% if user_signed_in? %>
+  <% if current_user.id == @play.user_id %>
+    <%= link_to 'Edit', edit_play_path(@play) %> |
+    <%= link_to  'Back', plays_path %>
+  <% end %>
+<% end %>
+</div>
+<script>
+$('.rating').raty({
+  readOnly: true,
+  score: () => { $(this).attr('data-score')}, 
+  path: '/assets/images'
+});
+</script>

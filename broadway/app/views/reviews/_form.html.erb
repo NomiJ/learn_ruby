@@ -1,0 +1,20 @@
+<%= form_for([@play, @play.reviews.build]) do |f| %>
+  
+  <div id='rating-form' class="field">
+      <label for="Rating"> Rating </label>
+  </div>
+
+  <div class="field">
+      <%= f.text_field :comment%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script>
+$('#rating-form').raty({
+  scoreName: 'review[rating]', 
+  path: '/assets/images'
+});
+</script>

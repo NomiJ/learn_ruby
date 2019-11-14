@@ -1,0 +1,12 @@
+<div class='rating' data-score='<%= review.rating %>'>
+</div>
+<br />
+<div>
+<%= review.comment %>
+ </div>
+ <div>
+ <% if user_signed_in? && review.user_id == current_user.id %>
+    <td><%= link_to 'Edit', edit_play_review_path(review.play, review), class: "btn btn-primary" %></td>
+    <td><%= link_to 'Destroy', play_review_path(review.play, review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+<% end%>
+ </div>
